@@ -1,0 +1,24 @@
+﻿/* Force classic yellow folder look */
+.jstree-default .jstree-icon.jstree-themeicon {
+    background-size: 18px 18px;
+}
+/* Force jsTree sprite path (your project structure) */
+.jstree-default .jstree-themeicon {
+    background-image: url('/Content/vendors/jstree/themes/default/32px.png') !important;
+}
+
+/* Style jsTree folder icons yellow */
+.csm-tree-folder-icon {
+    color: #f6c85f; /* yellow-ish */
+    font-size: 18px;
+}
+
+/* Increase icon size and ensure icon uses font (Font Awesome) */
+.jstree-default .jstree-themeicon .fa {
+    font-size: 18px;
+}
+
+/* ensure demo-pli icon inside jsTree node gets proper size */
+.jstree-node .demo-pli-folder {
+    font-size: 18px;
+}

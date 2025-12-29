@@ -1,0 +1,288 @@
+﻿.btn-fixed-width {
+    width: 70px;
+}
+
+.filter-control {
+    min-height: 40px;
+}
+
+.table-responsive-custom {
+    overflow-x: auto;
+}
+
+/* Status legend and badges */
+.status-legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #555;
+}
+
+    .status-legend .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+.legend-color {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Status badge (applies to the status cell text) */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 14px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* status colors (used both for legend squares and badges) */
+.status-raised {
+    background: #f39c12;
+}
+
+/* orange */
+.status-reopened {
+    background: #e84393;
+}
+
+/* pink */
+.status-inreview {
+    background: #f1c40f;
+    /*            color: #222;*/
+}
+
+/* yellow */
+.status-inprogress {
+    /* changed to blue for better contrast with completed */
+    background: #3498db;
+}
+
+/* blue */
+.status-approved {
+    background: #2ecc71;
+}
+
+/* green */
+.status-rejected {
+    background: #e74c3c;
+}
+
+/* red */
+.status-completed {
+    background: #7f8c8d;
+}
+
+/* dark grey */
+.status-closed {
+    background: #34495e;
+}
+
+/* dark blue/grey */
+
+/* make legend color squares use same colors when paired with status-* */
+.legend-color.status-raised,
+.legend-color.status-reopened,
+.legend-color.status-inreview,
+.legend-color.status-inprogress,
+.legend-color.status-approved,
+.legend-color.status-rejected,
+.legend-color.status-completed,
+.legend-color.status-closed {
+    background: inherit;
+}
+
+/* Select wrapper tweaks to preserve layout and center caret reliably */
+.select-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .select-with-icon .form-control, .select-with-icon .select2-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .select-with-icon .form-control {
+        padding-right: 40px;
+        color: #000;
+    }
+
+    .select-with-icon i.fa-caret-down {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #6c757d;
+        font-size: 14px;
+    }
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 26px;
+        color: #000;
+    }
+
+/* Select2 placeholder color and native select placeholder color */
+.select2-container--default .select2-selection__rendered.select2-selection__placeholder,
+.select2-container--default .select2-selection__placeholder {
+    color: #000 !important;
+}
+
+.select-with-icon .form-control option[value=""] {
+    color: #000;
+}
+
+/* Make Select2 visually identical to other .form-control selects */
+.select-with-icon .select2-container {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+.select-with-icon .select2-container--default .select2-selection--single {
+    min-height: 40px !important; /* match .filter-control height */
+    height: 40px !important;
+    padding: 6px 12px !important;
+    display: flex !important;
+    align-items: center !important; /* vertically center contents */
+    border-radius: 4px !important;
+    border: 1px solid #ced4da !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+}
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__rendered {
+        display: block;
+        line-height: normal !important; /* allow flex centering */
+        color: #000;
+    }
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        margin-right: 0;
+    }
+/* If any earlier rule sets padding/top on arrow, reset it */
+.select2-selection__arrow b {
+    margin-top: 0 !important;
+}
+/* Hide Select2's default arrow */
+.select-with-icon .select2-container--default .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+}
+
+/* Position custom caret icon correctly for Select2 */
+.select-with-icon i.fa-caret-down {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6c757d;
+    font-size: 14px;
+    z-index: 10;
+}
+/* Select2 dropdown item colors */
+.select2-container--default .select2-results__option {
+    color: #000 !important; /* Black text for all items */
+    background-color: #fff !important; /* White background */
+    padding: 8px 12px !important; /* Add some padding for better spacing */
+}
+
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #007bff !important; /* Blue background on hover */
+    color: #fff !important; /* White text on hover */
+}
+
+/* Remove highlighting from selected item in dropdown */
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    color: #000 !important; /* Keep black text */
+    background-color: #fff !important; /* Keep white background */
+}
+
+/* When selected item is also hovered */
+.select2-container--default .select2-results__option--highlighted[aria-selected="true"] {
+    background-color: #007bff !important; /* Blue background on hover */
+    color: #fff !important; /* White text on hover */
+}
+
+/* Child row styling */
+td.dt-control {
+    background: url('https://cdn.datatables.net/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+    width: 30px;
+}
+
+tr.shown td.dt-control {
+    background: url('https://cdn.datatables.net/images/details_close.png') no-repeat center center;
+}
+
+.child-row-content {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+}
+
+    .child-row-content .detail-row {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .child-row-content .detail-label {
+        font-weight: bold;
+        color: #495057;
+        min-width: 150px;
+    }
+
+    .child-row-content .detail-value {
+        color: #212529;
+    }
+
+/* Force left alignment for all table cells */
+#issueTable th,
+#issueTable td {
+    text-align: left !important;
+}
+
+    /* Ensure sorting icons are positioned on the right */
+    #issueTable th.sorting,
+    #issueTable th.sorting_asc,
+    #issueTable th.sorting_desc {
+        padding-right: 25px !important;
+        position: relative;
+    }
+
+        #issueTable th.sorting:before,
+        #issueTable th.sorting:after,
+        #issueTable th.sorting_asc:before,
+        #issueTable th.sorting_asc:after,
+        #issueTable th.sorting_desc:before,
+        #issueTable th.sorting_desc:after {
+            right: 8px !important;
+            left: auto !important;
+        }
+
+/* Specific fix for Created Date column */
+#issueTable thead th:nth-child(9),
+#issueTable tbody td:nth-child(9) {
+    text-align: left !important;
+}
+
+/* Ensure dt-control column doesn't get affected */
+#issueTable td.dt-control {
+    text-align: center !important;
+}

@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+
+<head>
+    <title>User Blocked</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href="~/Content/css/fonts/open-sans.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/account/userBlocked.css?v=1" rel="stylesheet" />
+</head>
+
+<body>
+
+    <style>
+	    body {
+	    	background-image: url('@Url.Content("~/Content/images/backgrounds/1.png")');
+	    }
+    </style>
+
+    <div class="modal fade show" id="modelSuspicousActivity" tabindex="-1" role="dialog" aria-labelledby="modelSuspicousActivity" aria-hidden="true" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span>Security Alert: User Account Blocked</span>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Dear valued user,
+                        <br><br>
+                        We regret to inform you that your account has been permanently blocked due to detected suspicious activity.
+                        <br><br>
+                        Our system has identified multiple failed login attempts originating from your account, prompting a security response to safeguard your account and our network. In the interest of protecting your data and maintaining a secure environment, access from this account has been permanently restricted.
+                        <br><br>
+                        To resolve this matter promptly, we kindly request you to reach out to your system administrator for further assistance in unblocking your account. They will provide you with the necessary guidance and support to reinstate your access.
+                        <br><br>
+                        We appreciate your understanding and cooperation in ensuring the security of our systems and your account.
+                        <br><br>
+                        Best regards,<br>
+                        Afisol (Pvt) Ltd.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='~/Content/plugins/jquery/jquery.min.js'></script>
+    <script src="~/Content/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/js/account/userBlocked.js?v=1"></script>
+
+</body>
+</html>

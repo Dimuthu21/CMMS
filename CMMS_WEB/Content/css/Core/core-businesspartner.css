@@ -1,0 +1,12 @@
+﻿/* core-businesspartner.css v1.0.0 */
+
+/* Keep validation consistent */
+.text-danger {
+    font-size: 0.85rem;
+}
+
+/* Optional spacing tweaks */
+.card-header h5,
+.card-header h6 {
+    margin: 0;
+}

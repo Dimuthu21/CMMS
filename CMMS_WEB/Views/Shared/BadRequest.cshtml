@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Bad Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/common/status.css" rel="stylesheet" />
+
+<div class="content__boxed">
+    <div class="content__wrap">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1>Bad Request</h1>
+                    <p>We're sorry, but there was an error on our server while processing your request.</p>
+                    <p>Please try again later or contact your administrator for immediate assistance</p>
+                    <div class="image-container">
+                        <img src="@Url.Content("~/Content/images/status/bad_request.png")" style="width: 350px; height: 300px;" alt="Bad Request">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

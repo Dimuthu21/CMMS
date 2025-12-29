@@ -1,0 +1,687 @@
+﻿@model CMMS_DAL.Modules.Core.Models.BusinessPartnerViewModel
+
+@{
+    ViewBag.Title = "Business Partner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/css/Core/core-businesspartner.css?v=1.0.0" rel="stylesheet" />
+}
+
+<div class="content__boxed">
+    <div class="content__wrap">
+
+        <!-- ===========================
+         CARD 1: HEADER PANEL
+    ============================ -->
+        <div class="card mb-3">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Business Partner</h5>
+
+                <a href="@Url.Action("List", "BusinessPartner", new { area = "" })"
+                   class="btn btn-primary">
+                    <i class="fa fa-list me-1"></i> List
+                </a>
+            </div>
+
+            <div class="card-body">
+                @Html.HiddenFor(m => m.Id, new { id = "BpId" })
+
+                <div class="row g-3">
+
+                    <!-- Row 1: Code + User Preferred -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Code</label>
+                        @Html.TextBoxFor(m => m.Code, new { @class = "form-control", id = "BpCode", @readonly = "readonly" })
+                        <span class="text-danger" id="valBpCode"></span>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-end">
+                        <div class="form-check form-switch mb-1">
+                            <input class="form-check-input" type="checkbox" id="BpUserPreferred">
+                            <label class="form-check-label" for="BpUserPreferred">User Preferred</label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12"></div>
+
+                    <!-- Row 2: Name + Currency -->
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+
+                        <label class="form-label">Name <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control trim-start", id = "BpName", placeholder = "Name" })
+                        <span class="text-danger" id="valBpName"></span>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <label class="form-label">Currency</label>
+                        <div class="position-relative">
+                            @Html.DropDownListFor(m => m.Currency,
+                                new SelectList(new[] { new { Value = "", Text = " - Select Currency - " } }, "Value", "Text"),
+                                new { @class = "form-control", id = "BpCurrency" })
+                            <i class="fa fa-caret-down position-absolute"
+                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                        </div>
+                        <span class="text-danger" id="valBpCurrency"></span>
+                    </div>
+
+                    <!-- Row 3: Deliveries + Account Balance -->
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <label class="form-label">Deliveries</label>
+                        <input type="text" id="BpDeliveries" class="form-control" placeholder="Deliveries" value="0" disabled />
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <label class="form-label">Account Balance</label>
+                        <input type="text" id="BpAccountBalance" class="form-control" value="0.00" disabled />
+                    </div>
+
+                    <!-- Row 4: Orders (left only) -->
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <label class="form-label">Orders</label>
+                        <input type="text" id="BpOrders" class="form-control" value="0" disabled />
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===========================
+         CARD 2: TAB PANEL
+    ============================ -->
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabGeneral" type="button" role="tab">
+                            General
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabHeadOffice" type="button" role="tab">
+                            Head Office
+                        </button>
+                    </li>
+                   
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabContactPersons" type="button" role="tab">
+                            Contact Persons
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAddress" type="button" role="tab">
+                            Address
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabPayment" type="button" role="tab">
+                            Payment
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabRemarks" type="button" role="tab">
+                            Remarks
+                        </button>
+                    </li>
+
+
+                </ul>
+
+                <div class="tab-content pt-3">
+                    <!-- ===========================
+         TAB: GENERAL
+    =========================== -->
+                    <div class="tab-pane fade show active" id="tabGeneral" role="tabpanel">
+
+                        <div class="row g-3">
+
+                            <!-- LEFT COLUMN -->
+                            <div class="col-lg-4 col-md-12">
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <label class="form-label">Tel No 1</label>
+                                        @Html.TextBoxFor(m => m.TelNo1, new { @class = "form-control trim-start", id = "BpTelNo1" })
+                                        <span class="text-danger" id="valBpTelNo1"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Tel No 2</label>
+                                        @Html.TextBoxFor(m => m.TelNo2, new { @class = "form-control trim-start", id = "BpTelNo2" })
+                                        <span class="text-danger" id="valBpTelNo2"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Mobile Number</label>
+                                        @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control trim-start", id = "BpMobile" })
+                                        <span class="text-danger" id="valBpMobile"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Fax</label>
+                                        @Html.TextBoxFor(m => m.Fax, new { @class = "form-control trim-start", id = "BpFax" })
+                                        <span class="text-danger" id="valBpFax"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Type</label>
+                                        <div class="d-flex gap-4 pt-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="BpIsSupplier">
+                                                <label class="form-check-label" for="BpIsSupplier">Supplier</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="BpIsCustomer">
+                                                <label class="form-check-label" for="BpIsCustomer">Customer</label>
+                                            </div>
+                                        </div>
+                                        <span class="text-danger" id="valBpType"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- MIDDLE COLUMN -->
+                            <div class="col-lg-4 col-md-12">
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <label class="form-label">Website</label>
+                                        @Html.TextBoxFor(m => m.Website, new { @class = "form-control trim-start", id = "BpWebsite" })
+                                        <span class="text-danger" id="valBpWebsite"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Industry</label>
+                                        <div class="position-relative">
+                                            @Html.DropDownListFor(m => m.IndustryId,
+                                                new SelectList(new[] { new { Value = "", Text = "- Select Industry -" } }, "Value", "Text"),
+                                                new { @class = "form-control", id = "BpIndustry" })
+                                            <i class="fa fa-caret-down position-absolute"
+                                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                        </div>
+                                        <span class="text-danger" id="valBpIndustry"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">TIN No</label>
+                                        @Html.TextBoxFor(m => m.TinNo, new { @class = "form-control trim-start", id = "BpTinNo" })
+                                        <span class="text-danger" id="valBpTinNo"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Sector <span class="text-danger">*</span></label>
+                                        <div class="position-relative">
+                                            @Html.DropDownListFor(m => m.SectorId,
+                                                new SelectList(new[] { new { Value = "", Text = "- Select Sector -" } }, "Value", "Text"),
+                                                new { @class = "form-control", id = "BpSector" })
+                                            <i class="fa fa-caret-down position-absolute"
+                                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                        </div>
+                                        <span class="text-danger" id="valBpSector"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- RIGHT COLUMN -->
+                            <div class="col-lg-4 col-md-12">
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <label class="form-label">Email</label>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control trim-start", id = "BpEmail" })
+                                        <span class="text-danger" id="valBpEmail"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Registration Number</label>
+                                        @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control trim-start", id = "BpRegNo" })
+                                        <span class="text-danger" id="valBpRegNo"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Trustee <span class="text-danger">*</span></label>
+                                        <div class="position-relative">
+                                            @Html.DropDownListFor(m => m.TrusteeId,
+                                                new SelectList(new[] { new { Value = "", Text = "- Select Trustee -" } }, "Value", "Text"),
+                                                new { @class = "form-control", id = "BpTrustee" })
+                                            <i class="fa fa-caret-down position-absolute"
+                                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                        </div>
+                                        <span class="text-danger" id="valBpTrustee"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Status <span class="text-danger">*</span></label>
+                                        <div class="position-relative">
+                                            @Html.DropDownListFor(m => m.Status,
+                                                new SelectList(new[] { new { Value = "", Text = "Select Status" } }, "Value", "Text"),
+                                                new { @class = "form-control", id = "BpStatus" })
+                                            <i class="fa fa-caret-down position-absolute"
+                                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                        </div>
+                                        <span class="text-danger" id="valBpStatus"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ===========================
+         TAB: CONTACT PERSONS
+    =========================== -->
+                    <div class="tab-pane fade" id="tabContactPersons" role="tabpanel">
+
+                        <div class="row g-3">
+
+                            <!-- Row 1 -->
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">First Name</label>
+                                <input type="text" id="CpFirstName" class="form-control trim-start" placeholder="First Name" />
+                                <span class="text-danger" id="valCpFirstName"></span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" id="CpLastName" class="form-control trim-start" placeholder="Last Name" />
+                                <span class="text-danger" id="valCpLastName"></span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">NIC Number</label>
+                                <input type="text" id="CpNicNumber" class="form-control trim-start" placeholder="NIC" />
+                                <span class="text-danger" id="valCpNicNumber"></span>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="text" id="CpMobileNumber" class="form-control trim-start" placeholder="Mobile" />
+                                <span class="text-danger" id="valCpMobileNumber"></span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Email</label>
+                                <input type="text" id="CpEmail" class="form-control trim-start" placeholder="Email" />
+                                <span class="text-danger" id="valCpEmail"></span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Designation</label>
+                                <div class="position-relative">
+                                    <select id="CpDesignation" class="form-control"></select>
+                                    <i class="fa fa-caret-down position-absolute"
+                                       style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                </div>
+                                <span class="text-danger" id="valCpDesignation"></span>
+                            </div>
+
+                            <!-- Default checkbox -->
+                            <div class="col-12">
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="checkbox" id="CpIsDefaultPerson">
+                                    <label class="form-check-label" for="CpIsDefaultPerson">Is Default person</label>
+                                </div>
+                            </div>
+
+                            <!-- Address split columns -->
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <label class="form-label">Address 01</label>
+                                <input type="text" id="CpAddress01Line01" class="form-control trim-start" placeholder="Address 01 Line 01" />
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <label class="form-label">Address 02</label>
+                                <input type="text" id="CpAddress02Line01" class="form-control trim-start" placeholder="Address 02 Line 01" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <input type="text" id="CpAddress01Line02" class="form-control trim-start" placeholder="Address 01 Line 02" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <input type="text" id="CpAddress02Line02" class="form-control trim-start" placeholder="Address 02 Line 02" />
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <input type="text" id="CpCity01" class="form-control trim-start" placeholder="City" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <input type="text" id="CpCity02" class="form-control trim-start" placeholder="City" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpPostalCode01" class="form-control trim-start" placeholder="Postal Code" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpPostalCode02" class="form-control trim-start" placeholder="Postal Code" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpState01" class="form-control trim-start" placeholder="State" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpState02" class="form-control trim-start" placeholder="State" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpCountry01" class="form-control trim-start" placeholder="Country" />
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <input type="text" id="CpCountry02" class="form-control trim-start" placeholder="Country" />
+                            </div>
+
+                            <!-- Add button -->
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" id="btnAddContactPerson">ADD</button>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="tblContactPersons" class="table table-striped table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>NIC Number</th>
+                                                <th>Mobile Number</th>
+                                                <th>Email</th>
+                                                <th>Designation</th>
+                                                <th>Address 01</th>
+                                                <th>Address 02</th>
+                                                <th style="width:80px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- ===========================
+         TAB: ADDRESSES
+    =========================== -->
+                    <div class="tab-pane fade" id="tabAddress" role="tabpanel">
+
+                        <!-- Address 1 -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">Address 1</label>
+                                <input type="text" id="Addr1" class="form-control trim-start" placeholder="Address 1" />
+                                <span class="text-danger" id="valAddr1"></span>
+                            </div>
+                        </div>
+
+                        <!-- Address 2 -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">Address 2</label>
+                                <input type="text" id="Addr2" class="form-control trim-start" placeholder="Address 2" />
+                                <span class="text-danger" id="valAddr2"></span>
+                            </div>
+                        </div>
+
+                        <!-- City -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">City</label>
+                                <input type="text" id="AddrCity" class="form-control trim-start" placeholder="City" />
+                                <span class="text-danger" id="valAddrCity"></span>
+                            </div>
+                        </div>
+
+                        <!-- District -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">District</label>
+                                <input type="text" id="AddrDistrict" class="form-control trim-start" placeholder="District" />
+                                <span class="text-danger" id="valAddrDistrict"></span>
+                            </div>
+                        </div>
+
+                        <!-- Province -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">Province</label>
+                                <input type="text" id="AddrProvince" class="form-control trim-start" placeholder="Province" />
+                                <span class="text-danger" id="valAddrProvince"></span>
+                            </div>
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">Postal Code</label>
+                                <input type="text" id="AddrPostalCode" class="form-control trim-start" placeholder="Postal Code" />
+                                <span class="text-danger" id="valAddrPostalCode"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ===========================
+         TAB: PAYMENT
+    =========================== -->
+                    <div class="tab-pane fade" id="tabPayment" role="tabpanel">
+
+                        <div class="row g-3">
+
+                            <!-- Left side -->
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <label class="form-label">Total Discount %</label>
+                                        <input type="text" id="PayTotalDiscount" class="form-control trim-start" placeholder="Total Discount" />
+                                        <span class="text-danger" id="valPayTotalDiscount"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Credit Limit</label>
+                                        <input type="text" id="PayCreditLimit" class="form-control trim-start" placeholder="Credit Limit" />
+                                        <span class="text-danger" id="valPayCreditLimit"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Right side -->
+                            <div class="col-lg-5 col-md-12 col-sm-12">
+                                <div class="row g-3">
+
+                                    <div class="col-12">
+                                        <label class="form-label">Credit Card Type</label>
+                                        <div class="position-relative">
+                                            <select id="PayCardType" class="form-control"></select>
+                                            <i class="fa fa-caret-down position-absolute"
+                                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                        </div>
+                                        <span class="text-danger" id="valPayCardType"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Credit Card No.</label>
+                                        <input type="text" id="PayCardNo" class="form-control trim-start" placeholder="Credit Card No" />
+                                        <span class="text-danger" id="valPayCardNo"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Expire Date</label>
+                                        <div class="input-group">
+                                            <input type="text" id="PayExpireDate" class="form-control trim-start" placeholder="Purchase Date" />
+                                            <span class="input-group-text">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <span class="text-danger" id="valPayExpireDate"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Average Delay</label>
+                                        <input type="text" id="PayAverageDelay" class="form-control trim-start" placeholder="Average Delay" />
+                                        <span class="text-danger" id="valPayAverageDelay"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Bank section -->
+                            <div class="col-12 mt-4">
+                                <h6 class="fw-bold mb-2">Business Partner Bank</h6>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Bank Country</label>
+                                <input type="text" id="BankCountry" class="form-control trim-start" placeholder="Bank Country" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">BIC/SWIFT Code</label>
+                                <input type="text" id="BankSwift" class="form-control trim-start" placeholder="BICS/SWIFT" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">IBAN</label>
+                                <input type="text" id="BankIban" class="form-control trim-start" placeholder="IBAN" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Bank Name</label>
+                                <input type="text" id="BankName" class="form-control trim-start" placeholder="Bank Name" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Bank Account Name</label>
+                                <input type="text" id="BankAccountName" class="form-control trim-start" placeholder="Bank Account Name" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Branch</label>
+                                <input type="text" id="BankBranch" class="form-control trim-start" placeholder="Branch" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Bank Code</label>
+                                <input type="text" id="BankCode" class="form-control trim-start" placeholder="Bank Code" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label class="form-label">Account No</label>
+                                <input type="text" id="BankAccountNo" class="form-control trim-start" placeholder="Account No" />
+                            </div>
+
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" id="btnAddBank">ADD</button>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="tblBanks" class="table table-bordered table-striped" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Bank Country</th>
+                                                <th>BIC/SWIFT Code</th>
+                                                <th>IBAN</th>
+                                                <th>Bank Name</th>
+                                                <th>Account Name</th>
+                                                <th>Branch</th>
+                                                <th>Bank Code</th>
+                                                <th>Account No</th>
+                                                <th style="width:80px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- TAB: REMARKS -->
+                    <div class="tab-pane fade" id="tabRemarks" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Remarks</label>
+                                <textarea id="BpRemarks" class="form-control trim-start" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: HEAD OFFICE -->
+                    <div class="tab-pane fade" id="tabHeadOffice" role="tabpanel">
+                        <div class="row g-3">
+
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label">Head Office</label>
+                                <div class="position-relative">
+                                    <select id="BpHeadOffice" class="form-control"></select>
+                                    <i class="fa fa-caret-down position-absolute"
+                                       style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="tblBranches" class="table table-striped table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <th style="width:160px;">Tel No.</th>
+                                                <th style="width:240px;">Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===========================
+         CARD 3: BUTTON PANEL
+    ============================ -->
+        <div class="card mb-4">
+            <div class="card-body d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary" id="btnBpClear">Clear</button>
+                <button type="button" class="btn btn-warning" id="btnBpReset">Reset</button>
+                <button type="button" class="btn btn-primary" id="btnBpSave">Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/Common/Core/BusinessPartner/businesspartner-create.js?v=1.0.0")"></script>
+}

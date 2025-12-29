@@ -1,0 +1,174 @@
+@* Views/Shared/_NavigationMenu.cshtml *@
+
+<nav id="mainnav-container" class="mainnav">
+    <div class="mainnav__inner">
+
+        <div class="mainnav__top-content scrollable-content pb-5">
+
+            <!-- Profile Widget -->
+            <div id="_dm-mainnavProfile" class="mainnav__widget my-3 hv-outline-parent">
+                <div class="mininav-toggle text-center py-2">
+                    <img class="mainnav__avatar img-md rounded-circle hv-oc"
+                         src="~/Content/img/profile-photos/1.png"
+                         alt="Profile Picture">
+                </div>
+
+                <div class="mininav-content collapse d-mn-max">
+                    <span data-popper-arrow class="arrow"></span>
+                    <div class="d-grid">
+                        <button type="button"
+                                class="mainnav-widget-toggle d-block btn border-0 p-2"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#usernav"
+                                aria-expanded="false"
+                                aria-controls="usernav">
+                            <h5 class="mb-0 me-3">Christopher Williams</h5>
+                            <small class="text-body-secondary">Administrator</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================
+                 TILE NAV: CORE ONLY
+                 ========================= -->
+            <div class="csm-tile-nav" data-tile="Core">
+                <ul id="core-menu" class="mainnav__menu nav flex-column">
+
+                    <!-- Business Partner group -->
+                    <li class="nav-item has-sub">
+                        <a href="#"
+                           class="nav-link mininav-toggle collapsed"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#core_bp_menu"
+                           aria-expanded="false"
+                           aria-controls="core_bp_menu">
+                            <i class="fa fa-briefcase fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Business Partner</span>
+                        </a>
+
+                        <ul id="core_bp_menu" class="mininav-content nav flex-column collapse">
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Trustee", new { area = "" })" class="nav-link">Trustee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Sector", new { area = "" })" class="nav-link">Sector</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Industry", new { area = "" })" class="nav-link">Industries</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("Create", "BusinessPartner", new { area = "" })" class="nav-link">Business Partner</a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Other Core menus (keep links; later build pages) -->
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Uom", new { area = "" })" class="nav-link">
+                            <i class="fa fa-balance-scale fs-5 me-2"></i>
+                            <span class="nav-label ms-1">UOM</span>
+                        </a>
+                    </li>
+
+                    <!-- Type Master group -->
+                    <li class="nav-item has-sub">
+                        <a href="#"
+                           class="nav-link mininav-toggle collapsed"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#core_typemaster_menu"
+                           aria-expanded="false"
+                           aria-controls="core_typemaster_menu">
+                            <i class="fa fa-list fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Type Master</span>
+                        </a>
+
+                        <ul id="core_typemaster_menu" class="mininav-content nav flex-column collapse">
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "ShipmentType", new { area = "" })" class="nav-link">
+                                    Shipment Type
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "BloodGroupType", new { area = "" })" class="nav-link">
+                                    Blood Group Type
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Relationship", new { area = "" })" class="nav-link">
+                                    Relationship
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "IssueMethod", new { area = "" })" class="nav-link">
+                                    Issue Method
+                                </a>
+                            </li>
+
+
+
+                            @* future type masters *@
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "DocumentApproval", new { area = "" })" class="nav-link">
+                            <i class="fa fa-check-square fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Document Approval</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "CurrencyConfiguration", new { area = "" })" class="nav-link">
+                            <i class="fa fa-dollar-sign fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Currency Configuration</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Configurations", new { area = "" })" class="nav-link">
+                            <i class="fa fa-cog fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Configurations</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            @* Later: Add other tile wrappers when you start them *@
+            <div class="csm-tile-nav" data-tile="HR"></div>
+            <div class="csm-tile-nav" data-tile="Inventory"></div>
+            <div class="csm-tile-nav" data-tile="Asset"></div>
+            <div class="csm-tile-nav" data-tile="Maintenance"></div>
+            <div class="csm-tile-nav" data-tile="System"></div>
+
+            <!-- Bottom menu -->
+            <div class="mainnav__bottom-content border-top pb-2">
+                <ul class="mainnav__menu nav flex-column">
+                    <li class="nav-item has-sub">
+                        <a href="#"
+                           class="nav-link mininav-toggle collapsed"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#logout_menu"
+                           aria-expanded="false"
+                           aria-controls="logout_menu">
+                            <i class="demo-pli-unlock fs-5 me-2"></i>
+                            <span class="nav-label ms-1">Logout</span>
+                        </a>
+                        <ul id="logout_menu" class="mininav-content nav flex-column collapse">
+                            <li data-popper-arrow class="arrow"></li>
+                            <li class="nav-item"><a href="#" class="nav-link">This device only</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">All Devices</a></li>
+                            <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Lock screen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>

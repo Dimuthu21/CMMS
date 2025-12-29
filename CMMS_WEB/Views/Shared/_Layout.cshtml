@@ -1,0 +1,238 @@
+﻿@* Views/Shared/_Layout.cshtml *@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" data-scheme="navy">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="description" content="Afisol CMMS">
+    <title>@ViewBag.Title - Afisol CMMS</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Theme / Bootstrap -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css?v=1.0.0">
+    <link rel="stylesheet" href="~/Content/css/nifty.min.css?v=1.0.0">
+    <link rel="stylesheet" href="~/Content/css/demo-purpose/demo-icons.min.css?v=1.0.0">
+    <link rel="stylesheet" href="~/Content/css/demo-purpose/demo-settings.min.css?v=1.0.0">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon-16x16.png">
+
+    <!-- Font Awesome (global) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <!-- Select2 -->
+    <link href="~/Content/vendors/select2/select2.min.css?v=1.0.0" rel="stylesheet" />
+
+    <!-- DataTables -->
+    <link href="~/Content/vendors/dataTables/datatables.min.css?v=1.0.0" rel="stylesheet" />
+
+    <!-- jsTree -->
+    <link href="~/Content/vendors/jstree/themes/default/style.min.css?v=1.0.0" rel="stylesheet" />
+
+    <!-- Common Styles (keep ONE copy only) -->
+    <link href="~/Content/css/common/page.css?v=1.0.0" rel="stylesheet" />
+    <link href="~/Content/css/common/chatbot.css?v=1.0.0" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="out-quart">
+
+    <!-- PAGE CONTAINER -->
+    <div id="root" class="root mn--max tm--expanded-hd">
+
+        <!-- CONTENTS -->
+        <section id="content" class="content">
+            @RenderBody()
+        </section>
+        <!-- END CONTENTS -->
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header__inner">
+
+                <!-- Brand -->
+                <div class="header__brand">
+                    <div class="brand-wrap">
+                        <a href="@Url.Action("Index","Home")"
+                           class="brand-img stretched-link d-flex align-items-center text-decoration-none">
+                            <img src="~/Content/img/logo.svg" alt="Logo" class="Nifty logo" width="16" height="16">
+                            <div class="brand-title ms-2">AFISOL CMMS</div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Brand -->
+
+                <div class="header__content">
+
+                    <!-- Left -->
+                    <div class="header__content-start">
+
+                        <button type="button" class="nav-toggler header__btn btn btn-icon btn-sm" aria-label="Nav Toggler">
+                            <i class="demo-psi-list-view"></i>
+                        </button>
+
+                        <div class="vr mx-1 d-none d-md-block"></div>
+
+                        <div class="header-searchbox">
+                            <label for="header-search-input"
+                                   class="header__btn d-md-none btn btn-icon rounded-pill shadow-none border-0 btn-sm">
+                                <i class="demo-psi-magnifi-glass"></i>
+                            </label>
+
+                            <form class="searchbox searchbox--auto-expand searchbox--hide-btn input-group">
+                                <input id="header-search-input"
+                                       class="searchbox__input form-control bg-transparent"
+                                       type="search"
+                                       placeholder="Type for search . . ."
+                                       aria-label="Search">
+                                <div class="searchbox__backdrop">
+                                    <button class="searchbox__btn header__btn btn btn-icon rounded shadow-none border-0 btn-sm" type="button">
+                                        <i class="demo-pli-magnifi-glass"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End Left -->
+                    <!-- Right -->
+                    <div class="header__content-end">
+
+                        <a href="@Url.Action("Index", "Home")" class="header__btn btn btn-icon btn-sm" aria-label="Home">
+                            <i class="demo-psi-layout-grid"></i>
+                        </a>
+
+                        <!-- Notification Dropdown (keep your existing markup if needed) -->
+                        <div class="dropdown">
+                            <button class="header__btn btn btn-icon btn-sm" type="button" data-bs-toggle="dropdown"
+                                    aria-label="Notification dropdown" aria-expanded="false">
+                                <span class="d-block position-relative">
+                                    <i class="demo-psi-bell"></i>
+                                    <span class="badge badge-super rounded-pill bg-danger p-1">
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </span>
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-end w-md-300px">
+                                <div class="border-bottom px-3 py-2 mb-3">
+                                    <h5>Notifications</h5>
+                                </div>
+                                <div class="list-group list-group-borderless">
+                                    <div class="text-center mb-2">
+                                        <a href="#" class="btn-link text-primary icon-link icon-link-hover">
+                                            Show all Notifications
+                                            <i class="bi demo-psi-arrow-out-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Dropdown (keep your existing markup if needed) -->
+                        <div class="dropdown">
+                            <button class="header__btn btn btn-icon btn-sm" type="button" data-bs-toggle="dropdown"
+                                    aria-label="User dropdown" aria-expanded="false">
+                                <i class="demo-psi-male"></i>
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-end w-md-450px">
+                                <div class="d-flex align-items-center border-bottom px-3 py-2">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-sm rounded-circle" src="~/Content/img/profile-photos/4.png" alt="Profile Picture" loading="lazy">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-0">Aaron Chavez</h5>
+                                        <span class="text-body-secondary fst-italic">aaron_chavez@example.com</span>
+                                    </div>
+                                </div>
+
+                                <div class="list-group list-group-borderless h-100 py-3">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="demo-pli-male fs-5 me-2"></i> Profile
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="demo-pli-gear fs-5 me-2"></i> Settings
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="demo-pli-unlock fs-5 me-2"></i> Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vr mx-1 d-none d-md-block"></div>
+
+                        <div class="form-check form-check-alt form-switch mx-md-2">
+                            <input id="headerThemeToggler" class="form-check-input mode-switcher" type="checkbox" role="switch">
+                            <label class="form-check-label ps-1 fw-bold d-none d-md-flex align-items-center" for="headerThemeToggler">
+                                <i class="mode-switcher-icon icon-light demo-psi-sun fs-5"></i>
+                                <i class="mode-switcher-icon icon-dark d-none demo-psi-half-moon"></i>
+                            </label>
+                        </div>
+
+                        <div class="vr mx-1 d-none d-md-block"></div>
+
+                        <button class="sidebar-toggler header__btn btn btn-icon btn-sm" type="button" aria-label="Sidebar button">
+                            <i class="demo-psi-dot-vertical"></i>
+                        </button>
+
+                    </div>
+                    <!-- End Right -->
+                </div>
+
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        @Html.Partial("~/Views/Shared/_NavigationMenu.cshtml")
+
+        <!-- Chatbot floating button -->
+        <div class="chatbot" title="Chat with support">
+            <i class="fa fa-comment-dots" style="font-size:20px"></i>
+        </div>
+
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <!-- =========================
+         SCRIPTS (Correct Order)
+         ========================= -->
+    <!-- jQuery -->
+    <script src="~/Content/vendors/jQuery/jquery.min.js?v=1.0.0"></script>
+
+    <!-- Popper -->
+    <script src="~/Content/vendors/popperjs/popper.min.js?v=1.0.0"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Content/vendors/bootstrap/bootstrap.min.js?v=1.0.0"></script>
+
+    <!-- Plugins depending on jQuery -->
+    <script src="~/Content/vendors/select2/select2.min.js?v=1.0.0"></script>
+    <script src="~/Content/vendors/dataTables/datatables.min.js?v=1.0.0"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- jsTree -->
+    <script src="~/Content/vendors/jstree/jstree.min.js?v=1.0.0"></script>
+
+    <!-- Common JS (MUST be before page scripts) -->
+    <script src="~/Content/Common/csm-data.js?v=1.0.0"></script>
+    <script src="~/Content/Common/csm-common.js?v=1.0.0"></script>
+    <script src="~/Content/Common/csm-init.js?v=1.0.0"></script>
+
+    <!-- Theme JS -->
+    <script src="~/Content/js/nifty.js?v=1.0.0"></script>
+
+    <!-- ChatBot -->
+    <script src="~/Content/js/ChatBot/ChatBot.js?v=1.0.0"></script>
+
+    <!-- Page-specific scripts -->
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

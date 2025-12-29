@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Access Denied";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/common/status.css" rel="stylesheet" />
+
+<div class="content__boxed">
+    <div class="content__wrap">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1>Access Denied</h1>
+                    <p>Sorry, but you do not have authorization to access this page or perform the requested action.</p>
+                    <p>Please contact your administrator for assistance or <a href='@Url.Action("Index", "Home")' class="link-primary">return to the homepage</a>.</p>
+                    <div class="image-container">
+                        <img src="@Url.Content("~/Content/images/status/access_denied.png")" style="width: 300px; height: 300px;" alt="Access Denied Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

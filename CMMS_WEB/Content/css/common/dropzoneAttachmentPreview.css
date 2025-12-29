@@ -1,0 +1,105 @@
+﻿:root {
+    --attach-bg: #ffffff;
+    --attach-border-radius: .6rem;
+    --attach-shadow: 0 4px 12px rgba(22, 34, 46, 0.05);
+    --attach-muted: #6c7a86;
+    --attach-accent: #254e78;
+}
+
+.attachment-list .attachment-card {
+    border: 0;
+    border-radius: var(--attach-border-radius);
+    box-shadow: var(--attach-shadow);
+    overflow: hidden;
+    background: var(--attach-bg);
+}
+
+.attachment-list .attachment-item {
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.attachment-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: .45rem;
+    flex: 0 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg,#f7fbff,#f1f6fb);
+    border: 1px solid rgba(37,78,120,0.03);
+}
+
+    .attachment-thumb img {
+        max-width: 54px;
+        max-height: 54px;
+        border-radius: .35rem;
+        object-fit: cover;
+    }
+
+.attachment-meta {
+    min-width: 0;
+}
+
+    .attachment-meta .title {
+        font-weight: 400;
+        color: #26343a;
+        font-size: 0.88rem;
+        line-height: 1.15;
+    }
+
+    .attachment-meta .sub {
+        color: var(--attach-muted);
+        font-size: .78rem;
+        margin-top: .22rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+.attachment-actions {
+    margin-left: auto;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.attachment-list .card + .card {
+    margin-top: 0.85rem;
+}
+
+.file-type-badge {
+    font-size: .67rem;
+    padding: .14rem .3rem;
+    border-radius: .32rem;
+    background: rgba(37,78,120,0.06);
+    color: var(--attach-accent);
+    font-weight: 600;
+}
+
+.btn-ghost {
+    border: 1px solid rgba(37,78,120,0.09);
+    background: transparent;
+    color: var(--attach-accent);
+    padding: .32rem .5rem;
+    border-radius: 1rem;
+}
+
+.btn-danger-ghost {
+    border: 1px solid rgba(220,53,69,0.09);
+    background: transparent;
+    color: #d23f3f;
+    padding: .32rem .5rem;
+    border-radius: 1rem;
+}
+
+.attachment-item.small {
+    padding: .7rem;
+}
+
+.attachment-meta .title.small {
+    font-size: .9rem;
+}

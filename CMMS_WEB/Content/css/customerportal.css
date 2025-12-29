@@ -1,0 +1,88 @@
+﻿/* =========================================
+   Customer Portal – UI styles
+   ========================================= */
+
+/* ---------- Dropdown caret icon ---------- */
+.csm-select-icon {
+    position: absolute;
+    right: 12px;
+    top: 38px; /* aligns with bootstrap input */
+    pointer-events: none;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* When Select2 is used, adjust caret */
+.select2-container + .csm-select-icon {
+    top: 42px;
+}
+
+/* ---------- Validation (field-level) ---------- */
+.input-validation-error {
+    border-color: #dc3545;
+}
+
+.field-validation-error,
+.text-danger.small {
+    font-size: 0.85rem;
+    margin-top: 2px;
+    display: block;
+}
+
+/* ---------- Table styles ---------- */
+#tblPortalAllocations th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+#tblPortalAllocations td,
+#tblPortalAllocations th {
+    vertical-align: middle;
+}
+
+    /* Empty row text */
+    #tblPortalAllocations td.text-muted {
+        padding: 20px 10px;
+    }
+
+/* ---------- Action buttons ---------- */
+#tblPortalAllocations .btn {
+    padding: 4px 8px;
+}
+
+    #tblPortalAllocations .btn i {
+        font-size: 13px;
+    }
+
+/* Red delete icon emphasis */
+#tblPortalAllocations .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+    #tblPortalAllocations .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+/* ---------- Buttons spacing ---------- */
+#CustomerPortalCreatePage .btn {
+    min-width: 90px;
+}
+
+/* ---------- Remaining field ---------- */
+#RemainingUserCount {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 768px) {
+    .csm-select-icon {
+        top: 34px;
+    }
+
+    #CustomerPortalCreatePage .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/css/home.css?v=1.0.0" rel="stylesheet" />
+}
+
+<div class="content__header content__boxed rounded-0">
+    <div class="content__wrap">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="content__boxed">
+    <div class="content__wrap">
+        <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-12">
+
+                    <div class="home-tiles">
+
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="HR"
+                           href="@Url.Action("Index","Home")">
+                            <div class="top">
+                                <i class="fa fa-users icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">HR</div>
+                        </a>
+
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="Inventory"
+                           href="@Url.Action("Index","Home")">
+                            <div class="top">
+                                <i class="fa fa-boxes icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">Inventory</div>
+                        </a>
+
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="Asset"
+                           href="@Url.Action("Index","Home")">
+                            <div class="top">
+                                <i class="fa fa-desktop icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">Asset</div>
+                        </a>
+
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="Maintenance"
+                           href="@Url.Action("Index","Home")">
+                            <div class="top">
+                                <i class="fa fa-tools icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">Maintenance</div>
+                        </a>
+
+                        <!-- Core tile: go to first Core page -->
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="Core"
+                           href="@Url.Action("Index","Trustee")">
+                            <div class="top">
+                                <i class="fa fa-server icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">Core</div>
+                        </a>
+
+                        <a class="home-tile cmms-tile-link"
+                           data-tile="System"
+                           href="@Url.Action("Index","Home")">
+                            <div class="top">
+                                <i class="fa fa-cogs icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="bottom">System</div>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

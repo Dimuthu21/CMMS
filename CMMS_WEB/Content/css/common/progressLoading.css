@@ -1,0 +1,15 @@
+﻿#modalProgressLoading #spanProgressLoadingTitle {
+    text-align: justify;
+}
+
+#modalProgressLoading #pProgressLoadingText {
+    text-align: justify;
+    font-size: 14px;
+    margin-top: 10px;
+    padding-right: 15px;
+}
+
+#modalProgressLoading .modal-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

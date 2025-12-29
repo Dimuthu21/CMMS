@@ -1,0 +1,337 @@
+﻿body {
+}
+.form-label.required:after {
+    content: " *";
+    color: #d9534f;
+}
+
+.code-input-group {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.inventory-description {
+    min-height: 80px;
+}
+
+/* Toggle switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #0b4da6; /* navy */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0b4da6;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+/* optional rounded class */
+.slider.round {
+    border-radius: 24px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+/* Password checklist popup */
+.pw-requirements {
+    position: absolute;
+    z-index: 50;
+    width: 300px;
+    background: #f5f7fa;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    display: none;
+}
+
+    .pw-requirements h6 {
+        margin-top: 0;
+        font-weight: 700;
+    }
+
+    .pw-requirements ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+    .pw-requirements li {
+        margin: 6px 0;
+    }
+
+.pw-valid {
+    color: #28a745;
+}
+
+.pw-invalid {
+    color: #dc3545;
+}
+
+/* Total users box */
+.total-users-box {
+    border: 1px solid #e9ecef;
+    padding: 12px;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.progress {
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background: #8cd34b;
+}
+
+.total-users-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.form-label.required:after {
+    content: " *";
+    color: #d9534f;
+}
+
+.code-input-group {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.inventory-description {
+    min-height: 80px;
+}
+
+/* Toggle switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #0b4da6;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0b4da6;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+/* Password checklist popup */
+.pw-requirements {
+    position: absolute;
+    z-index: 50;
+    width: 300px;
+    background: #f5f7fa;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    display: none;
+}
+
+    .pw-requirements h6 {
+        margin-top: 0;
+        font-weight: 700;
+    }
+
+    .pw-requirements ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+    .pw-requirements li {
+        margin: 6px 0;
+    }
+
+.pw-valid {
+    color: #28a745;
+}
+
+.pw-invalid {
+    color: #dc3545;
+}
+
+/* Total users box */
+.total-users-box {
+    border: 1px solid #e9ecef;
+    padding: 12px;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.progress {
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background: #8cd34b;
+}
+
+.total-users-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Product select */
+.product-select {
+    width: 100%;
+}
+
+/* Select2 styles */
+.select2-container--default .select2-selection__choice__remove,
+.select2-container--default .select2-selection__choice .select2-selection__choice__remove,
+.select2-container--default .select2-selection__choice__remove:hover {
+    color: #000 !important;
+}
+
+    .select2-container--default .select2-selection__choice__remove::before {
+        color: #000 !important;
+    }
+
+.select2-container--default .select2-selection--multiple {
+    align-items: center;
+}
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 0.375rem;
+        overflow: hidden;
+        align-items: center;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - 40px);
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-search--inline .select2-search__field {
+        display: none !important;
+    }
+
+.select2-container--default .select2-search--dropdown,
+.select2-container .select2-search--dropdown {
+    display: none !important;
+}
+
+.select2-container--default .select2-selection--multiple:before {
+    content: attr(data-placeholder);
+    color: #999;
+    position: absolute;
+    pointer-events: none;
+}
+
+.select2-container--default .select2-selection--multiple.select2-selection--clearable:before {
+    display: none;
+}
+
+.select2-container--default .select2-selection--multiple:has(.select2-selection__choice):before {
+    display: none !important;
+}
+
+.position-relative > .total-users-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+}

@@ -1,0 +1,83 @@
+﻿body {
+}
+
+/* Business Master specific styles */
+
+/* Ensure table headers text alignment and equal column widths */
+#tblBusinessPartners {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#tblBusinessPartners th,
+#tblBusinessPartners td {
+    vertical-align: middle;
+    padding: .5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Give equal width to all five columns */
+#tblBusinessPartners td:nth-child(1),
+#tblBusinessPartners th:nth-child(1),
+#tblBusinessPartners td:nth-child(2),
+#tblBusinessPartners th:nth-child(2),
+#tblBusinessPartners td:nth-child(3),
+#tblBusinessPartners th:nth-child(3),
+#tblBusinessPartners td:nth-child(4),
+#tblBusinessPartners th:nth-child(4),
+#tblBusinessPartners td:nth-child(5),
+#tblBusinessPartners th:nth-child(5) {
+    width: 20%;
+}
+
+/* Contact / address table rules (kept from earlier) */
+#tblContactPersons, #tblAddresses {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#tblContactPersons th,
+#tblContactPersons td,
+#tblAddresses th,
+#tblAddresses td {
+    vertical-align: middle;
+    padding: .5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#tblContactPersons thead th,
+#tblAddresses thead th {
+    text-align: left;
+}
+
+#tblContactPersons td:last-child,
+#tblAddresses td:last-child {
+    width: 80px;
+    text-align: center;
+}
+
+/* Make contact columns proportionally wider for names */
+#tblContactPersons td:nth-child(1) { width: 18%; }
+#tblContactPersons td:nth-child(2) { width: 18%; }
+#tblContactPersons td:nth-child(3) { width: 14%; }
+#tblContactPersons td:nth-child(4) { width: 18%; }
+#tblContactPersons td:nth-child(5) { width: 12%; }
+#tblContactPersons td:nth-child(6) { width: 20%; }
+
+/* Addresses widths */
+#tblAddresses td:nth-child(1) { width: 20%; }
+#tblAddresses td:nth-child(2) { width: 20%; }
+#tblAddresses td:nth-child(3) { width: 12%; }
+#tblAddresses td:nth-child(4) { width: 12%; }
+#tblAddresses td:nth-child(5) { width: 12%; }
+#tblAddresses td:nth-child(6) { width: 12%; }
+
+/* Small icon button style */
+.btn-remove-contact i,
+.btn-remove-address i {
+    pointer-events: none;
+}

@@ -1,0 +1,49 @@
+﻿.btn-fixed-width {
+    width: 70px;
+}
+
+.filter-control {
+    min-height: 40px;
+}
+
+.table-responsive-custom {
+    overflow-x: auto;
+}
+
+.select2-container--default .select2-selection--multiple .select2-search--inline .select2-search__field {
+    display: none !important;
+}
+
+.select2-container--default .select2-search--dropdown,
+.select2-container .select2-search--dropdown {
+    display: none !important;
+}
+
+.select2-container--default .select2-selection__choice__remove,
+.select2-container--default .select2-selection__choice .select2-selection__choice__remove,
+.select2-container--default .select2-selection__choice__remove:hover {
+    color: #000 !important;
+}
+
+    .select2-container--default .select2-selection__choice__remove::before {
+        color: #000 !important;
+    }
+
+.select2-container--default .select2-selection--multiple:before {
+    content: attr(data-placeholder);
+    color: #999;
+    position: absolute;
+    pointer-events: none;
+}
+
+.select2-container--default .select2-selection--multiple.select2-selection--clearable:before {
+    display: none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered:has(.select2-selection__choice):before {
+    display: none !important;
+}
+
+.select2-container--default .select2-selection--multiple:has(.select2-selection__choice):before {
+    display: none !important;
+}

@@ -1,0 +1,250 @@
+﻿.form-label.required:after {
+    content: " *";
+    color: #d9534f;
+}
+
+.code-input-group {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.inventory-description {
+    min-height: 120px;
+}
+
+.upload-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.file-list {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background: #f8f9fa;
+}
+
+.file-item-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.file-item-size {
+    font-size: 12px;
+    color: #6c757d;
+    margin-right: 10px;
+}
+
+.btn-remove-file {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.chatbot {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 56px;
+    height: 56px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.code-toggle-icon {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+}
+
+    .code-toggle-icon.active {
+        background: rgba(0,123,255,0.12);
+        color: #007bff;
+    }
+
+.btn-fixed-width {
+    width: 70px;
+}
+
+/* styling for submodule selects */
+.submodule-col {
+}
+
+    .submodule-col .form-label {
+    }
+
+.submodule-select {
+    width: 100%;
+}
+
+.submodule-col .select-with-icon {
+    position: relative;
+}
+
+    .submodule-col .select-with-icon .fa-caret-down {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #6c757d;
+    }
+
+.alert {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Select wrapper tweaks to preserve layout and center caret reliably */
+.select-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .select-with-icon .form-control, .select-with-icon .select2-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .select-with-icon .form-control {
+        padding-right: 40px;
+        color: #000;
+    }
+
+    .select-with-icon i.fa-caret-down {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #6c757d;
+        font-size: 14px;
+    }
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 26px;
+        color: #000;
+    }
+
+/* Select2 placeholder color and native select placeholder color */
+.select2-container--default .select2-selection__rendered.select2-selection__placeholder,
+.select2-container--default .select2-selection__placeholder {
+    color: #000 !important;
+}
+
+.select-with-icon .form-control option[value=""] {
+    color: #000;
+}
+
+/* Make Select2 visually identical to other .form-control selects */
+.select-with-icon .select2-container {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+.select-with-icon .select2-container--default .select2-selection--single {
+    min-height: 40px !important; /* match .filter-control height */
+    height: 40px !important;
+    padding: 6px 12px !important;
+    display: flex !important;
+    align-items: center !important; /* vertically center contents */
+    border-radius: 4px !important;
+    border: 1px solid #ced4da !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+}
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__rendered {
+        display: block;
+        line-height: normal !important; /* allow flex centering */
+        color: #000;
+    }
+
+    .select-with-icon .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        margin-right: 0;
+    }
+/* If any earlier rule sets padding/top on arrow, reset it */
+.select2-selection__arrow b {
+    margin-top: 0 !important;
+}
+/* Hide Select2's default arrow */
+.select-with-icon .select2-container--default .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+}
+
+/* Position custom caret icon correctly for Select2 */
+.select-with-icon i.fa-caret-down {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6c757d;
+    font-size: 14px;
+    z-index: 10;
+}
+/* Select2 dropdown item colors */
+.select2-container--default .select2-results__option {
+    color: #000 !important; /* Black text for all items */
+    background-color: #fff !important; /* White background */
+    padding: 8px 12px !important; /* Add some padding for better spacing */
+}
+
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #007bff !important; /* Blue background on hover */
+    color: #fff !important; /* White text on hover */
+}
+
+/* Remove highlighting from selected item in dropdown */
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    color: #000 !important; /* Keep black text */
+    background-color: #fff !important; /* Keep white background */
+}
+
+/* When selected item is also hovered */
+.select2-container--default .select2-results__option--highlighted[aria-selected="true"] {
+    background-color: #007bff !important; /* Blue background on hover */
+    color: #fff !important; /* White text on hover */
+}

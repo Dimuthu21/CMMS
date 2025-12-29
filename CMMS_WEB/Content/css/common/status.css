@@ -1,0 +1,25 @@
+﻿.container {
+    width: 100% !important;
+    text-align: center;
+    background-color: #fff;
+    padding: 75px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #d9534f;
+}
+
+p {
+    color: #333;
+}
+
+.image-container {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

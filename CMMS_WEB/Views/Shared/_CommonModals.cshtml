@@ -1,0 +1,33 @@
+﻿<div class="modal fade in" id="modalProgressLoading" tabindex="-1" aria-labelledby="modalProgressLoading" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title text-danger fs-5" id="progressTitle"></h1>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <img class="loading me-3" src="@Url.Content("~/Content/images/spinners/loading2.gif")" style="width: 45px; height: 45px;">
+                    <label class="control-label text-primary flex-fill" style="font-size: 14px; margin: 0;" id="labelProgressText" name="labelProgressText"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="modalErrorMessage" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 350px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" style="margin-right:5px;  margin-top: -10px;"><i class="pci-cross pci-circle"></i></button>
+                <h3 class="panel-title text-start" style="" id="ErrorMessageTitle"></h3>
+            </div>
+            <div class="modal-body" style="min-height: 0px !important; padding-top: 0px;">
+                <div class="row" style="margin-left: -10px; margin-right: -10px;">
+                    <div class="col-sm-12">
+                        <label id="ErrorMessageDetail" class="text-primary"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
