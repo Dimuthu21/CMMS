@@ -1,4 +1,4 @@
-@* Views/Shared/_NavigationMenu.cshtml *@
+﻿@* Views/Shared/_NavigationMenu.cshtml *@
 
 <nav id="mainnav-container" class="mainnav">
     <div class="mainnav__inner">
@@ -86,35 +86,53 @@
 
                         <ul id="core_typemaster_menu" class="mininav-content nav flex-column collapse">
 
+                            <!-- 1️⃣ Shipment Type -->
                             <li class="nav-item">
                                 <a href="@Url.Action("Index", "ShipmentType", new { area = "" })" class="nav-link">
                                     Shipment Type
                                 </a>
                             </li>
 
+                            <!-- 2️⃣ Expense Type (NEW – placed second as requested) -->
+                            <li class="nav-item">
+                                <a href="@Url.Action("ExpenseTypeIndex", "ExpenseType", new { area = "" })" class="nav-link">
+                                    Expense Type
+                                </a>
+                            </li>
+
+                            <!-- 3️⃣ Blood Group Type -->
                             <li class="nav-item">
                                 <a href="@Url.Action("Index", "BloodGroupType", new { area = "" })" class="nav-link">
                                     Blood Group Type
                                 </a>
                             </li>
+
+                            <!-- 4️⃣ Relationship -->
                             <li class="nav-item">
                                 <a href="@Url.Action("Index", "Relationship", new { area = "" })" class="nav-link">
                                     Relationship
                                 </a>
                             </li>
+
+                            <!-- 5️⃣ Issue Method -->
                             <li class="nav-item">
                                 <a href="@Url.Action("Index", "IssueMethod", new { area = "" })" class="nav-link">
                                     Issue Method
                                 </a>
                             </li>
 
-
+                            <!-- 6️⃣ Country Of Origin -->
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "CountryOfOrigin", new { area = "" })" class="nav-link">
+                                    Country Of Origin
+                                </a>
+                            </li>
 
                             @* future type masters *@
                         </ul>
                     </li>
 
-
+                    <!-- Other Core menus remain unchanged -->
                     <li class="nav-item">
                         <a href="@Url.Action("Index", "DocumentApproval", new { area = "" })" class="nav-link">
                             <i class="fa fa-check-square fs-5 me-2"></i>
@@ -135,6 +153,7 @@
                             <span class="nav-label ms-1">Configurations</span>
                         </a>
                     </li>
+
 
                 </ul>
             </div>

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Expense Type List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/css/common/page.css?v=1.0.0" rel="stylesheet" />
+}
+
+<div class="content__header content__boxed rounded-0">
+</div>
+
+<div class="content__boxed">
+    <div class="content__wrap">
+
+        <!-- =========================
+     CARD 1: FILTERS
+    ========================== -->
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0">Expenses Type List</h5>
+                    <button type="button" class="btn btn-primary" id="btnNewExpenseType">New </button>
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Code</label>
+                        <input type="text" id="fltExpenseTypeCode" class="form-control trim-start" placeholder="Code" />
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Expenses Name</label>
+                        <select id="fltExpenseTypeName" class="form-control">
+                            <option value="">- Select Expense -</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Status</label>
+                        <div class="position-relative">
+                            <select id="fltExpenseTypeStatus" class="form-control">
+                                <option value="">- Select Status -</option>
+                            </select>
+                            <i class="fa fa-caret-down position-absolute"
+                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <button type="button" class="btn btn-light" id="btnBpClearFilter">Clear</button>
+                <button type="button" class="btn btn-primary" id="btnBpFilter">Filter</button>
+            </div>
+        </div>
+
+
+        <!-- =========================
+     CARD 2: TABLE
+    ========================== -->
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tblExpenseTypes" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="width:140px;">Code</th>
+                                <th>Expenses Name</th>
+                                <th style="width:120px;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* JS renders rows *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Content/Common/Core/TypeMaster/ExpenseType/expensetype-list.js?v=1.0.0"></script>
+}

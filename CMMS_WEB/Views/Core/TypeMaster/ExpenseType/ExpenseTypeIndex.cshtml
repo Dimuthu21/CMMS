@@ -1,0 +1,85 @@
+﻿@model CMMS_DAL.Modules.Core.TypeMaster.ExpenseType.Models.ExpenseTypeViewModel
+
+@{
+    ViewBag.Title = "Expenses Types";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/css/common/page.css?v=1.0.0" rel="stylesheet" />
+}
+
+<div class="content__header content__boxed rounded-0">
+</div>
+
+<div class="content__boxed">
+    <div class="content__wrap">
+
+        <!-- =========================
+         CARD 1: FORM
+        ========================== -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0">Expenses Types</h5>
+                    <button type="button" class="btn btn-primary" id="btnGoExpenseTypeList">List</button>
+                </div>
+
+                @Html.HiddenFor(m => m.ExpenseTypeId, new { id = "ExpenseTypeId" })
+
+                <div class="row g-3">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Code <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.Code, new { @class = "form-control", id = "ExpenseTypeCode", @readonly = "readonly" })
+                        <span class="text-danger" id="valExpenseTypeCode"></span>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ExpenseTypeIsUserPreferred">
+                            <label class="form-check-label" for="ExpenseTypeIsUserPreferred">User Preferred</label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12"></div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <label class="form-label">Expenses Name <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control trim-start", id = "ExpenseTypeName", placeholder = "Expenses Name" })
+                        <span class="text-danger" id="valExpenseTypeName"></span>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <label class="form-label">Status <span class="text-danger">*</span></label>
+                        <div class="position-relative">
+                            @Html.DropDownListFor(m => m.StatusId,
+                                new SelectList(new[] { new { Value = "", Text = "Select" } }, "Value", "Text"),
+                                new { @class = "form-control", id = "ExpenseTypeStatus" })
+                            <i class="fa fa-caret-down position-absolute"
+                               style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                        </div>
+                        <span class="text-danger" id="valExpenseTypeStatus"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================
+         CARD 2: BUTTONS (separate panel)
+        ========================== -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <button type="button" class="btn btn-light" id="btnExpenseTypeClear">Clear</button>
+                <button type="button" class="btn btn-primary" id="btnExpenseTypeSave">Save</button>
+                <button type="button" class="btn btn-danger" id="btnExpenseTypeDelete" style="display:none;">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Content/Common/Core/TypeMaster/ExpenseType/expensetype-index.js?v=1.0.0"></script>
+}
