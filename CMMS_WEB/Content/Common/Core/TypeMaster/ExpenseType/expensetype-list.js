@@ -1,7 +1,7 @@
 ﻿// ===============================
 // expensetype-list.js (UI-only)
 // Module : Core > TypeMaster > ExpenseType
-// Version: 1.0.0
+// Version: 1.0.1
 // ===============================
 
 (function () {
@@ -30,7 +30,7 @@
         var src = (CsmData.Lookups && CsmData.Lookups.Status) ? CsmData.Lookups.Status : [];
         return src.map(function (x) {
             var v = (x && x.value) ? x.value.toString() : "";
-            var id = (v.toLowerCase() === "active") ? 1 : 2;
+            var id = (v.toLowerCase() === "active") ? 1 : 2; // 1=Active, 2=Inactive
             return { value: id, text: (x && x.text) ? x.text : v };
         });
     }
@@ -44,8 +44,6 @@
         getStatusOptions().forEach(function (x) {
             $ddl.append($("<option/>").val(x.value).text(x.text));
         });
-
-        // Do NOT set a default here; leave the filter empty so user must choose.
     }
 
     function bindExpenseNameFilter() {
@@ -62,9 +60,7 @@
 
     function initSelect2() {
         if ($.fn.select2) {
-            $("#fltExpenseTypeName").select2({
-                width: "100%"
-            });
+            $("#fltExpenseTypeName").select2({ width: "100%" });
         }
     }
 
@@ -74,25 +70,11 @@
             window.location.href = "/ExpenseType/ExpenseTypeIndex";
         });
 
-        // Primary IDs used in Razor
         $("#btnBpFilter").off("click").on("click", function () {
             renderTable();
         });
 
         $("#btnBpClearFilter").off("click").on("click", function () {
-            $("#fltExpenseTypeCode").val("");
-            $("#fltExpenseTypeName").val("").trigger("change");
-            $("#fltExpenseTypeStatus").val("");
-
-            renderTable();
-        });
-
-        // Fallback: also bind legacy/alternate IDs in case view uses different names
-        $(document).off("click", "#btnExpenseTypeFilter").on("click", "#btnExpenseTypeFilter", function () {
-            renderTable();
-        });
-
-        $(document).off("click", "#btnExpenseTypeFilterClear").on("click", "#btnExpenseTypeFilterClear", function () {
             $("#fltExpenseTypeCode").val("");
             $("#fltExpenseTypeName").val("").trigger("change");
             $("#fltExpenseTypeStatus").val("");
@@ -133,23 +115,30 @@
         return out;
     }
 
+    function destroyDataTableIfAny() {
+        if ($.fn.DataTable && $.fn.DataTable.isDataTable("#tblExpenseTypes")) {
+            $("#tblExpenseTypes").DataTable().destroy();
+        }
+    }
+
     function renderTable() {
+
+        // ✅ IMPORTANT FIX:
+        // Destroy DataTable BEFORE changing tbody, otherwise it can restore old DOM and filtering looks broken.
+        destroyDataTableIfAny();
+
         var list = store.listActive() || [];
         var f = getFilterData();
-
         var filtered = filterList(list, f);
 
         var $tbody = $("#tblExpenseTypes tbody");
         $tbody.empty();
 
         filtered.forEach(function (x) {
-            var tr = $("<tr/>")
-                .attr("data-id", x.id);
-
+            var tr = $("<tr/>").attr("data-id", x.id);
             tr.append($("<td/>").text(x.code || ""));
             tr.append($("<td/>").text(x.name || ""));
             tr.append($("<td/>").text(x.statusText || ""));
-
             $tbody.append(tr);
         });
 
@@ -158,10 +147,6 @@
     }
 
     function initDataTable() {
-        if ($.fn.DataTable && $.fn.DataTable.isDataTable("#tblExpenseTypes")) {
-            $("#tblExpenseTypes").DataTable().destroy();
-        }
-
         dt = CsmCommon.initDataTable("#tblExpenseTypes", {
             ordering: false,
             scrollX: true

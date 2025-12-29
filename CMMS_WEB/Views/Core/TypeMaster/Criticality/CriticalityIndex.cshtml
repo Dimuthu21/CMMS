@@ -1,0 +1,84 @@
+﻿@model CMMS_DAL.Modules.Core.TypeMaster.Criticality.Models.CriticalityViewModel
+
+@{
+    ViewBag.Title = "Criticality";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/Content/css/common/page.css?v=1.0.0" rel="stylesheet" />
+}
+
+
+<div class="content__boxed">
+    <div class="content__wrap">
+
+        <!-- =========================
+         CARD 1: FORM
+        ========================== -->
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0">Criticality</h5>
+                    <button type="button" class="btn btn-primary" id="btnGoCriticalityList">List</button>
+                </div>
+
+                @Html.HiddenFor(m => m.CriticalityId, new { id = "CriticalityId" })
+
+            <div class="row g-3">
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <label class="form-label">Code <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control", id = "CriticalityCode", @readonly = "readonly" })
+                    <span class="text-danger" id="valCriticalityCode"></span>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-center">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="ExpenseTypeIsUserPreferred">
+                        <label class="form-check-label" for="ExpenseTypeIsUserPreferred">User Preferred</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12"></div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <label class="form-label">Criticality Level <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.Level, new { @class = "form-control trim-start", id = "CriticalityLevel", placeholder = "Criticality Level" })
+                    <span class="text-danger" id="valCriticalityLevel"></span>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <label class="form-label">Status <span class="text-danger">*</span></label>
+                    <div class="position-relative">
+                        @Html.DropDownListFor(m => m.StatusId,
+                            new SelectList(new[] { new { Value = "", Text = "Select" } }, "Value", "Text"),
+                            new { @class = "form-control", id = "CriticalityStatus" })
+                        <i class="fa fa-caret-down position-absolute"
+                           style="right:12px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                    </div>
+                    <span class="text-danger" id="valCriticalityStatus"></span>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <!-- =========================
+         CARD 2: BUTTONS
+        ========================== -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <button type="button" class="btn btn-light" id="btnCriticalityClear">Clear</button>
+                <button type="button" class="btn btn-primary" id="btnCriticalitySave">Save</button>
+                <button type="button" class="btn btn-danger" id="btnCriticalityDelete" style="display:none;">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Content/Common/Core/TypeMaster/Criticality/criticality-index.js?v=1.0.0"></script>
+}
